@@ -1,7 +1,7 @@
 // JSON Server module
 const jsonServer = require("json-server");
 const cors = require("cors");
-const {openSync} = require("fs");
+const {writeFileSync} = require("fs");
 const server = jsonServer.create();
 const router = jsonServer.router("db.json");
 
@@ -9,7 +9,6 @@ const router = jsonServer.router("db.json");
 const middlewares = jsonServer.defaults();
 
 server.use(cors());
-server.use(middlewares);
 server.use(middlewares);
 // Add this before server.use(router)
 server.use(
@@ -22,7 +21,8 @@ server.use(router);
 // Listen to port
 const PORT = process.env.PORT || 3000;
 
-openSync('db.json', 'r+');
+const dbFile = 'db.json';
+writeFileSync(dbFile, '');
 
 // Export the Server API
 module.exports = server;
