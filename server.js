@@ -1,32 +1,30 @@
-// JSON Server module
 const jsonServer = require("json-server");
 const cors = require("cors");
-const {writeFileSync} = require("fs");
+const { writeFileSync } = require("fs");
 const server = jsonServer.create();
-const router = jsonServer.router("db.json");
-
-// Make sure to use the default middleware
 const middlewares = jsonServer.defaults();
 
 server.use(cors());
 server.use(middlewares);
 // Add this before server.use(router)
 server.use(
-    // Add custom route here if needed
     jsonServer.rewriter({
         "/*": "/$1",
     })
 );
-server.use(router);
-// Listen to port
-const PORT = process.env.PORT || 3000;
 
-const dbFile = 'db.json';
-writeFileSync(dbFile, '');
+// Armazena o banco de dados em memória
+let db = null;
 
-// Export the Server API
-module.exports = server;
+// Middleware para salvar o banco de dados em 'db.json' antes de responder
+server.use((req, res, next) => {
+    db.write();
+    next();
+});
 
-server.listen(PORT, () => {
-    console.log(`JSON Server is running on port ${PORT}`);
+// Cria um banco de dados em memória
+db = jsonServer.router("db.json").db;
+
+server.listen(process.env.PORT || 3000, () => {
+    console.log(`JSON Server is running`);
 });
