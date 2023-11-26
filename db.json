@@ -1,19 +1,102 @@
 {
-  "posts": [
+  "recipe": [
     {
       "id": 1,
-      "title": "json-server",
-      "author": "typicode"
+      "name": "torta de manteiga escocesa",
+      "hourValue": 3,
+      "appliesDefaultValue": false,
+      "comments": "Testando a receita com flor de sal",
+      "color": "#176B87",
+      "preparationTime": 0,
+      "startDate": "2023-11-21T12:34:56.789Z",
+      "isConcluded": true
+    },
+    {
+      "name": "Bolo de cenoura",
+      "hourValue": 5,
+      "appliesDefaultValue": false,
+      "comments": "com figos",
+      "color": "#ffc107",
+      "id": 8,
+      "preparationTime": 0,
+      "startDate": "2023-11-21T12:34:56.789Z",
+      "isConcluded": false
+    },
+    {
+      "name": "pudim",
+      "hourValue": 0,
+      "appliesDefaultValue": true,
+      "comments": "",
+      "color": "#98FB98",
+      "id": 9,
+      "preparationTime": 0,
+      "startDate": "2023-11-21T12:34:56.789Z",
+      "isConcluded": false
+    },
+    {
+      "name": "croquete",
+      "hourValue": 5,
+      "appliesDefaultValue": false,
+      "comments": "Testando com queijo provolone",
+      "color": "#cddc39",
+      "preparationTime": 0,
+      "startDate": "2023-11-22T01:26:09.799Z",
+      "isConcluded": false,
+      "id": 10
     }
   ],
-  "comments": [
+  "user": [
     {
       "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "name": "Juliana",
+      "email": "ju@tste.com",
+      "password": "senha",
+      "hourValue": 5
+    },
+    {
+      "id": 2,
+      "name": "Juliana Teste",
+      "email": "juteste@tste.com",
+      "password": "senha123",
+      "hourValue": 5
     }
   ],
-  "profile": {
-    "name": "typicode"
-  }
+  "material": [
+    {
+      "id": 1,
+      "userId": 1,
+      "recipeId": 8,
+      "name": "Granulado",
+      "comments": "marca: nestle",
+      "price": 3,
+      "amount": 1
+    },
+    {
+      "id": 2,
+      "userId": 1,
+      "recipeId": 1,
+      "name": "Creme de Leite",
+      "comments": "sem lactose",
+      "price": 6,
+      "amount": 3
+    }
+  ],
+  "costs": [
+    {
+      "id": 1,
+      "userId": 1,
+      "recipeId": 1,
+      "totalMaterialCost": 10,
+      "totalTimeValue": 5,
+      "totalCost": 15
+    },
+    {
+      "id": 2,
+      "userId": 8,
+      "recipeId": 8,
+      "totalMaterialCost": 60,
+      "totalTimeValue": 3,
+      "totalCost": 63
+    }
+  ]
 }
